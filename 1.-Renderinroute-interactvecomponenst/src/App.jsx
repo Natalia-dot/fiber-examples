@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import './App.css'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { degToRad } from 'three/src/math/MathUtils.js'
 
 const Cube = (props) => {
@@ -13,6 +13,8 @@ const ref = useRef();
  * normal state, it will NOT trigger re-renders, and it will STAY AS THE EDITED REF between
  * them. That way the boxes will re render on each frame as needed but the value for rotation (or whatever
  * value to be changed)
+ * Without animations or anything that changes between renders, the ref is useless:
+ * we don't have values we need to change on each frame
  */
 
 const [isHovered, setIsHovered] = useState(false)
@@ -32,6 +34,26 @@ return(
 )
 }
 
+const RotatingCube = (props) => {
+  const ref = useRef();
+  useFrame((state, delta) => (ref.current.rotation.x += delta))
+  return(
+    <>
+    <mesh
+      {...props}
+      ref={ref}
+    >
+      <boxGeometry args={[1,1,1]}/>
+      <meshStandardMaterial color={'green'}/>
+    </mesh>
+    </>
+  )
+}
+
+
+const RotatingAndInteractveCube = (props) => {
+  
+}
 
 
 const App = () => {
@@ -44,7 +66,7 @@ const App = () => {
       <Cube/>
       <Cube position={[-2, 0, 0]}/>
       <Cube position={[2, 0, 0]}/>
-
+      <RotatingCube position={[0, 2, 0]}/>
     </Canvas>
     </div>
     </>
