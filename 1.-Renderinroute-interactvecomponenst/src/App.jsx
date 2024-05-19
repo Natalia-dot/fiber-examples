@@ -52,7 +52,22 @@ const RotatingCube = (props) => {
 
 
 const RotatingAndInteractveCube = (props) => {
+  const ref = useRef();
+  const [isHovered, setIsHovered] = useState(false)
+  useFrame((state, delta) => (isHovered ? ref.current.rotation.x -= delta : ref.current.rotation.x += delta))
   
+  return(
+    <>
+      <mesh
+        {...props}
+        ref={ref}
+        onPointerOver={(e) =>(e.stopPropagation(), setIsHovered(true))}
+        onPointerOut={(e) => setIsHovered(false)}>
+          <boxGeometry/>
+          <meshStandardMaterial color={'coral'}/>
+      </mesh>
+    </>
+  )
 }
 
 
@@ -67,6 +82,7 @@ const App = () => {
       <Cube position={[-2, 0, 0]}/>
       <Cube position={[2, 0, 0]}/>
       <RotatingCube position={[0, 2, 0]}/>
+      <RotatingAndInteractveCube position={[-2, 2, 0]}/>
     </Canvas>
     </div>
     </>
