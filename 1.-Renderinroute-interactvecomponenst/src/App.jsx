@@ -2,6 +2,8 @@ import { useRef, useState } from 'react'
 import './App.css'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { degToRad } from 'three/src/math/MathUtils.js'
+import * as THREE from "three";
+import { objectScale } from 'three/examples/jsm/nodes/Nodes.js';
 
 const Cube = (props) => {
 const ref = useRef();
@@ -34,6 +36,10 @@ return(
 )
 }
 
+
+
+
+
 const RotatingCube = (props) => {
   const ref = useRef();
   useFrame((state, delta) => (ref.current.rotation.x += delta))
@@ -49,6 +55,9 @@ const RotatingCube = (props) => {
     </>
   )
 }
+
+
+
 
 
 const RotatingAndInteractveCube = (props) => {
@@ -71,6 +80,28 @@ const RotatingAndInteractveCube = (props) => {
 }
 
 
+
+
+const SoftChange = (props) => {
+  const color = new THREE.Color;
+  const ref = useRef();
+  const [hover, setHover] = useState(false);
+  const targetScale = hover ? new THREE.Vector3(1.5, 1.5, 1.5) : new THREE.Vector3(1, 1, 1);
+  useFrame((state,delta) => (ref.current.rotation.y += delta, ref.current.material.color.lerp(color.set(hover ? '#fa2720' : 'yellow'), 0.1),  ref.current.scale.lerp(hover ? new THREE.Vector3(1.5, 1.5, 1.5): new THREE.Vector3(1,1,1), 0.1))); //here I could also put the targetScale variable 
+  return(
+    <>
+      <mesh
+        {...props}
+        ref={ref}
+        onPointerOver={(e) => (e.stopPropagation(), setHover(true), console.log(ref))}
+        onPointerOut={() => setHover(false)}>
+          <boxGeometry/>
+          <meshStandardMaterial/>
+      </mesh>
+    </>
+  )
+}
+
 const App = () => {
   return (
     <>
@@ -83,6 +114,7 @@ const App = () => {
       <Cube position={[2, 0, 0]}/>
       <RotatingCube position={[0, 2, 0]}/>
       <RotatingAndInteractveCube position={[-2, 2, 0]}/>
+      <SoftChange position={[2,2,0]}/>
     </Canvas>
     </div>
     </>
