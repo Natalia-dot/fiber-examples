@@ -16,6 +16,13 @@ export default function Button(props) {
     //and each pair of elements refers to the red green blue and alpha channels respectively.
     []
   )
+
+  const initialRotation = useMemo(() => [
+    MathUtils.degToRad(randomNumber(360)),
+    MathUtils.degToRad(randomNumber(360)),
+    MathUtils.degToRad(randomNumber(360)),
+  ], []);
+
   useFrame(() => {
     ref.current.rotation.x = hovered
       ? MathUtils.lerp(ref.current.rotation.x, -Math.PI * 2, 0.025)
@@ -36,6 +43,7 @@ export default function Button(props) {
       }}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
+      rotation={initialRotation}
     >
       <icosahedronGeometry />
       <meshPhysicalMaterial
