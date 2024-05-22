@@ -10,7 +10,7 @@ function Rig() {
   return useFrame(({ camera, mouse }) => {
     // vec.set(mouse.x * 2, 3 + (mouse.y * 2), camera.position.z) this would be a way to have the camera start from above, by
     //adding a fixed "base" value to the camera position   
-    vec.set(mouse.x * 2, mouse.y * 2, camera.position.z)
+    vec.set(mouse.x * 1, mouse.y * 1, camera.position.z)
     camera.position.lerp(vec, 0.025)
     camera.lookAt(0, 0, 0)
   })

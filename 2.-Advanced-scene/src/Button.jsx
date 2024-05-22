@@ -50,8 +50,8 @@ export default function Button(props) {
         roughness={0}
         metalness={0}
         thickness={3.12}
-        ior={1.74}
-        transmission={1.0}
+        ior={2.74}
+        transmission={8.0}
       />
     </mesh>
   )
