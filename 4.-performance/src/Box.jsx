@@ -15,7 +15,7 @@ export const Box = (props) => {
       ref={ref}
       onPointerDown={() => changeShape(!shape)}
       geometry={shape ? box : torus}>
-      <meshBasicMaterial color={'red'} wireframe />
+      <meshStandardMaterial color={'red'} />
     </mesh>
   )
 }
