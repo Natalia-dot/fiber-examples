@@ -9,7 +9,11 @@ export const App = () => {
   return (
     <Canvas camera={{ position: [0, 0, 2] }} shadows>
       <directionalLight castShadow position={[-2, 3, 1]} intensity={0.5} />
-      <Floor rotation={[-degToRad(80), 0, 0]} position={[0, -1, 0]} />
+      <Floor
+        rotation={[-degToRad(80), 0, 0]}
+        position={[0, -1, 0]}
+        receiveShadow
+      />
       <Box rotation={[0, -1, 0]} position={[0, 0, 0]} castShadow />
       {
         // the props work to edit the element upon initialization
