@@ -1,20 +1,28 @@
 import React from 'react'
 import { Box } from './Box'
-import { Canvas } from '@react-three/fiber'
-import { PerformanceMonitor } from '@react-three/drei'
+import { Canvas, useLoader } from '@react-three/fiber'
+import { OrbitControls, PerformanceMonitor } from '@react-three/drei'
 import { Floor } from './Floor'
 import { degToRad } from 'three/src/math/MathUtils.js'
+import { Icosahedron } from './Icosahedron'
+import * as THREE from 'three'
 
 export const App = () => {
+  let texture = useLoader(THREE.TextureLoader, '../public/img/grid.png')
   return (
-    <Canvas camera={{ position: [0, 0, 2] }} shadows>
+    <Canvas camera={{ position: [0, 1, 4] }} shadows>
+      <OrbitControls />
       <directionalLight castShadow position={[-2, 3, 1]} intensity={0.5} />
       <Floor
         rotation={[-degToRad(80), 0, 0]}
         position={[0, -1, 0]}
         receiveShadow
       />
-      <Box rotation={[0, -1, 0]} position={[0, 0, 0]} castShadow />
+      <Box rotation={[0, -1, 0]} position={[-1, 0, 0]} castShadow />
+      <Icosahedron
+        position={[1, 0, 0]}
+        material={new THREE.MeshStandardMaterial({ map: texture })}
+      />
       {
         // the props work to edit the element upon initialization
       }
