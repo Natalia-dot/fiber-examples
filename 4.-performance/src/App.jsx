@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Box } from './Box'
 import { Canvas, useLoader } from '@react-three/fiber'
-import { OrbitControls, PerformanceMonitor } from '@react-three/drei'
+import { Environment, OrbitControls } from '@react-three/drei'
 import { Floor } from './Floor'
 import { degToRad } from 'three/src/math/MathUtils.js'
 import { Icosahedron } from './Icosahedron'
@@ -11,30 +11,32 @@ import { GLTFLoader } from 'three/examples/jsm/Addons.js'
 export const App = () => {
   let texture = useLoader(THREE.TextureLoader, '../public/img/grid.png')
   const gltf = useLoader(GLTFLoader, '/models/monkey.glb')
-  let modelRef = useRef()
 
-  console.log('holaa', gltf.scene.children[0].material)
-  useEffect(() => {
-    // Traverse the scene and update the material
-    gltf.scene.traverse((child) => {
-      if (child.isMesh) {
-        child.material = new THREE.MeshStandardMaterial({ color: 'blue' })
-        console.log(gltf.scene)
-        console.log(child)
-      }
-    })
-  }, [gltf])
+  // let modelRef = useRef()
+  // useEffect(() => {
+  //   // Traverse the scene and update the material
+  //   gltf.scene.traverse((child) => {
+  //     if (child.isMesh) {
+  //       child.material = new THREE.MeshStandardMaterial({ color: 'blue' })
+  //     }
+  //   })
+  // }, [gltf])
   //o We have to do this because our 3D model may already have textures applied. We need to access the model's meshes
   //o and transform them to a new material each.
   //o I'm not too sure this is the best way, but for the moment, we will use this.
   //o So far I haven't found the way ;w;
 
   return (
-    <Canvas camera={{ position: [0, 1, 4] }} shadows>
-      <OrbitControls />
-      <directionalLight castShadow position={[-2, 5, 1]} intensity={0.5} />
+    <Canvas camera={{ position: [0, 2, 6] }} shadows>
+      <Environment
+        background
+        files={'../public/img/miau.hdr'}
+        backgroundBlurriness={0.2}
+      />
+      <OrbitControls target={[0, 0, 0]} />
+      <directionalLight castShadow position={[3, 5, 1]} intensity={0.9} />
       <Floor
-        rotation={[-degToRad(80), 0, 0]}
+        rotation={[-degToRad(90), 0, 0]}
         position={[0, -1, 0]}
         receiveShadow
       />
@@ -43,7 +45,7 @@ export const App = () => {
         position={[1, 0, 0]}
         material={new THREE.MeshStandardMaterial({ map: texture })}
       />
-      <primitive ref={modelRef} object={gltf.scene} position={[0, 2, 0]} />
+      <primitive object={gltf.scene} position={[0, 2, 0]} />
 
       {
         // the props work to edit the element upon initialization
