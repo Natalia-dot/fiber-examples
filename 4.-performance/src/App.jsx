@@ -10,7 +10,7 @@ import { GLTFLoader } from 'three/examples/jsm/Addons.js'
 
 export const App = () => {
   let texture = useLoader(THREE.TextureLoader, '../public/img/grid.png')
-  const gltf = useLoader(GLTFLoader, '/models/monkey.glb')
+  const gltf = useLoader(GLTFLoader, '/models/Fox.glb')
 
   // let modelRef = useRef()
   // useEffect(() => {
@@ -45,7 +45,7 @@ export const App = () => {
         position={[1, 0, 0]}
         material={new THREE.MeshStandardMaterial({ map: texture })}
       />
-      <primitive object={gltf.scene} position={[0, 2, 0]} />
+      <primitive object={gltf.scene} position={[0, 2, 0]} scale={0.02} />
 
       {
         // the props work to edit the element upon initialization
