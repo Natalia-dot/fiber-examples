@@ -56,6 +56,7 @@ export const InfoCard = ({ $showInfo, $showIcon }) => {
       <section>
         <hgroup name="#pointer">
           <h3>Pointer trouble</h3>
+          <p>This is something that commonly happens to me when trying to</p>
         </hgroup>
         <hgroup name="#updating">
           <h3>Updating objects with instances.</h3>

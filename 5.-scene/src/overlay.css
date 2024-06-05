@@ -54,17 +54,6 @@
   animation: slideInFromTop 1s ease-in-out; /* Apply the animation */
 }
 
-#info {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  cursor: url('/img/pointerr.png') 15 15, auto;
-  transition: opacity 2s;
-}
-
 #info.show-icon {
   opacity: 1;
 }

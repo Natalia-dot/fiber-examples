@@ -58,7 +58,7 @@ const Scene = () => {
         autoRotate
         autoRotateSpeed={0.2}
       />
-      <axesHelper position={[0, 1, 0]} />
+      {/* <axesHelper position={[0, 1, 0]} /> */}
 
       <directionalLight
         ref={directionalLightRef}
