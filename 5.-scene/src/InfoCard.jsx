@@ -8,7 +8,7 @@ export const InfoCard = ({ $showInfo, $info }) => {
         style={{
           padding: '30px 60px'
         }}
-        className={$info ? 'show-info-card' : 'hide-info-card'}>
+        className={$info ? 'show-card-animation' : 'hide-card-animation'}>
         <hgroup id="hgroup-1">
           <h1 style={{ padding: '15px 0' }}>This is a prefabricated scene.</h1>
           <p style={{ fontSize: '24px', width: '80%' }}>
