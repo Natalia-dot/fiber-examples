@@ -1,3 +1,8 @@
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 14;
+  line-height: 10px;
+}
+
 #overlay {
   width: 100%;
   height: 100%;
@@ -28,18 +33,66 @@ a {
   transition: transform 0.3s;
 }
 
-#info > img:hover,
-#infoCardClick > img:hover {
-  transform: scale(1.2); /* Use transform instead of scale in keyframes */
-}
-
 #infoCard {
   width: 60%;
   height: 90%;
   justify-content: center;
-  background-color: aliceblue;
+  background-color: #eae5e1;
+  color: #2e2d2d;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   padding-top: 15px;
+  border-radius: 0px 51px 51px 51px;
+  -moz-border-radius: 0px 51px 51px 51px;
+  -webkit-border-radius: 0px 51px 51px 51px;
+  opacity: 1;
+  transform: translateX(-150%); /* Initial state off-screen */
+  transition: transform 1s ease-in-out;
+}
+
+#info > img:hover,
+#infoCardClick > img:hover {
+  transform: scale(1.2); /* Use transform instead of scale in keyframes */
+}
+#infoCard > a {
+  padding: 15px;
+}
+
+#infoCard > a > img {
+  justify-self: baseline;
+}
+
+#summary {
+  width: 100%;
+  margin: 2rem 0;
+  align-self: baseline;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  line-height: 200%;
+  color: #eae5e1;
+  background-color: #2e2d2d;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+#summary > h3 > a {
+  font-weight: 100;
+  text-decoration: none;
+  color: #ffebeb;
+}
+
+#summary > h3 {
+  display: flex;
+  align-items: center;
+}
+
+#infoCard.show-card-animation {
+  transform: translateX(0);
+}
+
+.hide-card-animation {
+  transform: translateX(-150%);
 }
