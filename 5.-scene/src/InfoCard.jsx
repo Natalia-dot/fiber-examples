@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-export const InfoCard = ({ $showInfo }) => {
+export const InfoCard = ({ $showInfo, $showIcon }) => {
   const [animate, setAnimate] = useState(false)
 
   const handleClose = () => {
+    $showIcon(true)
     setAnimate(false)
     setTimeout(() => $showInfo(false), 2000)
   }
@@ -40,10 +41,6 @@ export const InfoCard = ({ $showInfo }) => {
           <span className="material-symbols-outlined">arrow_downward</span>
         </h3>
         <h3>
-          <a href="#animations">Animations</a>
-          <span className="material-symbols-outlined">arrow_downward</span>
-        </h3>
-        <h3>
           <a href="#render">Too many rendering components</a>
           <span className="material-symbols-outlined">arrow_downward</span>
         </h3>
@@ -51,13 +48,30 @@ export const InfoCard = ({ $showInfo }) => {
           <a href="#extend">"Extend" by FIBER</a>
           <span className="material-symbols-outlined">arrow_downward</span>
         </h3>
+        <h3>
+          <a href="#animations">CSS animations</a>
+          <span className="material-symbols-outlined">arrow_downward</span>
+        </h3>
       </section>
       <section>
-        <hgroup name="#pointer"></hgroup>
-        <hgroup name="#updating"></hgroup>
-        <hgroup name="#animations"></hgroup>
-        <hgroup name="#render"></hgroup>
-        <hgroup name="#extend"></hgroup>
+        <hgroup name="#pointer">
+          <h3>Pointer trouble</h3>
+        </hgroup>
+        <hgroup name="#updating">
+          <h3>Updating objects with instances.</h3>
+        </hgroup>
+        <hgroup name="#animations">
+          <h3>Animations</h3>
+        </hgroup>
+        <hgroup name="#render">
+          <h3>Too many rendered components.</h3>
+        </hgroup>
+        <hgroup name="#extend">
+          <h3>Extend by FIBER</h3>
+        </hgroup>
+        <hgroup name="#animations">
+          <h3>CSS animations</h3>
+        </hgroup>
       </section>
       <a id="infoCardClick" onClick={handleClose}>
         <img src="/img/close.png" alt="closing icon" />
