@@ -34,6 +34,7 @@ a {
 }
 
 #infoCard {
+  padding: 30px 60px;
   width: 60%;
   height: 90%;
   justify-content: center;
@@ -48,13 +49,13 @@ a {
   -moz-border-radius: 0px 51px 51px 51px;
   -webkit-border-radius: 0px 51px 51px 51px;
   opacity: 1;
-  transform: translateX(-150%); /* Initial state off-screen */
-  transition: transform 1s ease-in-out;
+  transform: translateX(-150%);
+  transition: transform 2s ease-out;
 }
 
 #info > img:hover,
 #infoCardClick > img:hover {
-  transform: scale(1.2); /* Use transform instead of scale in keyframes */
+  transform: scale(1.2);
 }
 #infoCard > a {
   padding: 15px;
@@ -93,6 +94,6 @@ a {
   transform: translateX(0);
 }
 
-.hide-card-animation {
+#infoCard.hide-card-animation {
   transform: translateX(-150%);
 }

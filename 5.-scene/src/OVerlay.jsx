@@ -12,7 +12,7 @@ export const OVerlay = () => {
         style={{ display: info && 'none' }}>
         <img alt="information about this scene" src="/img/info.png" />
       </a>
-      {info && <InfoCard $showInfo={showInfo} $info={info} />}
+      {info && <InfoCard $showInfo={showInfo} />}
     </div>
   )
 }
