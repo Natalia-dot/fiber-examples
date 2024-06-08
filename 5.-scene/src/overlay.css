@@ -90,6 +90,35 @@ a {
   opacity: 1;
   transform: translateX(-150%);
   transition: transform 2s ease-out;
+  overflow-y: scroll;
+  text-align: justify;
+  line-height: 30px;
+  /* scrollbar-width: thin;
+  scrollbar-color: #2e2d2d #eae5e1; */
+}
+
+#infoCard::-webkit-scrollbar {
+  width: 10px;
+  height: 2px;
+}
+#infoCard::-webkit-scrollbar-track {
+  background: none;
+  margin: 50px;
+}
+
+#infoCard::-webkit-scrollbar-thumb {
+  background: #2e2d2d;
+  border-radius: 25px;
+  height: 15px;
+  -webkit-box-shadow: 0px 15px 19px -5px rgba(34, 34, 34, 0.75);
+  -moz-box-shadow: 0px 15px 19px -5px rgba(34, 34, 34, 0.75);
+  box-shadow: 0px 15px 19px -5px rgba(34, 34, 34, 0.75);
+}
+#infoCard::-webkit-scrollbar-thumb:hover {
+  background: #1f1e1e;
+  -webkit-box-shadow: 0px 15px 19px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 15px 19px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 15px 19px -5px rgba(0, 0, 0, 0.75);
 }
 
 #info > img:hover,
@@ -135,4 +164,27 @@ a {
 
 #infoCard.hide-card-animation {
   transform: translateX(-150%);
+}
+
+hgroup > h3 {
+  padding: 15px 0;
+}
+
+.header-right-corner {
+  border-radius: 51px 51px 0px 51px;
+  -moz-border-radius: 51px 51px 0px 51px;
+  -webkit-border-radius: 51px 51px 0px 51px;
+  background-color: #2e2d2d;
+  color: #eae5e1;
+  padding: 15px 40px 15px 15px;
+  text-align: end;
+}
+
+.header-left-corner {
+  border-radius: 51px 51px 51px 0px;
+  -moz-border-radius: 51px 51px 51px 0px;
+  -webkit-border-radius: 51px 51px 51px 0px;
+  background-color: #2e2d2d;
+  color: #eae5e1;
+  padding: 15px;
 }

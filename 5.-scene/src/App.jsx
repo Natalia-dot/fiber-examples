@@ -85,6 +85,7 @@ export const App = () => {
   return (
     <>
       <Canvas camera={{ position: [0, 3, -4] }} shadows>
+        <fogExp2 attach={'fog'} args={['#522d2d', 0.06]} position={[0, 0, 0]} />
         <Scene />
       </Canvas>
       <OVerlay />
