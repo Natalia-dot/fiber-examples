@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { InfoCard } from './InfoCard'
 import './overlay.css'
+import { Buttons } from './Buttons'
 
 export const OVerlay = () => {
   const [info, showInfo] = useState(false)
@@ -31,6 +32,7 @@ export const OVerlay = () => {
         <img alt="information about this scene" src="/img/info.png" />
       </a>
       {info && <InfoCard $showInfo={showInfo} $showIcon={setAnimateInfoIcon} />}
+      <Buttons />
     </div>
   )
 }
