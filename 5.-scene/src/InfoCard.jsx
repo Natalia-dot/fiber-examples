@@ -23,6 +23,14 @@ export const InfoCard = ({ $showInfo, $showIcon }) => {
     <div
       id="infoCard"
       className={animate ? 'show-card-animation' : 'hide-card-animation'}>
+      <a id="infoCardClick" onClick={handleClose}>
+        <img src="/img/close.png" alt="closing icon" />
+      </a>{' '}
+      {
+        //this has to go in this part of the document so that the sticky positioning works!
+        //it gets the first ancestor it can find, so it was using one of the sections as the ancestor,
+        //which made the position stay at the very bottom
+      }
       <hgroup id="hgroup-1">
         <h1 style={{ padding: '15px 0' }}>This is a prefabricated scene.</h1>
         <p style={{ fontSize: '24px', width: '80%' }}>
@@ -183,9 +191,6 @@ export const InfoCard = ({ $showInfo, $showIcon }) => {
           <h3>CSS animations</h3>
         </hgroup>
       </section>
-      <a id="infoCardClick" onClick={handleClose}>
-        <img src="/img/close.png" alt="closing icon" />
-      </a>
     </div>
   )
 }

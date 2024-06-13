@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: hidden;
 }
 
 @keyframes slideInFromTop {
@@ -72,6 +73,14 @@ a {
   transition: transform 0.3s;
 }
 
+a#infoCardClick {
+  position: sticky;
+  left: 90%;
+  top: 5%;
+  padding: 0;
+  height: 30px;
+}
+
 #infoCard {
   padding: 30px 60px;
   width: 60%;
@@ -114,6 +123,7 @@ a {
   -moz-box-shadow: 0px 15px 19px -5px rgba(34, 34, 34, 0.75);
   box-shadow: 0px 15px 19px -5px rgba(34, 34, 34, 0.75);
 }
+
 #infoCard::-webkit-scrollbar-thumb:hover {
   background: #1f1e1e;
   -webkit-box-shadow: 0px 15px 19px -5px rgba(0, 0, 0, 0.75);
@@ -124,9 +134,6 @@ a {
 #info > img:hover,
 #infoCardClick > img:hover {
   transform: scale(1.2);
-}
-#infoCard > a {
-  padding: 15px;
 }
 
 #infoCard > a > img {
@@ -187,4 +194,50 @@ hgroup > h3 {
   background-color: #2e2d2d;
   color: #eae5e1;
   padding: 15px;
+}
+
+#camButtonDiv {
+  width: 100%;
+  height: 10%;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  padding: 0 15px 30px 15px;
+}
+
+#camButtonDiv > button {
+  width: 50%;
+  margin: 2rem;
+  height: 100%;
+}
+
+@keyframes getOpacity {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes takeOpacity {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+#camButtonDiv.slide-in-animation {
+  animation: getOpacity 1s ease-in-out;
+}
+
+#camButtonDiv.slide-out-animation {
+  animation: takeOpacity 1s ease-in-out;
 }

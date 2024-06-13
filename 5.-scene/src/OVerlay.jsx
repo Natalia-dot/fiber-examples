@@ -32,7 +32,13 @@ export const OVerlay = () => {
         <img alt="information about this scene" src="/img/info.png" />
       </a>
       {info && <InfoCard $showInfo={showInfo} $showIcon={setAnimateInfoIcon} />}
-      <Buttons />
+
+      <Buttons
+        style={{ display: info ? 'none' : 'flex' }}
+        className={
+          animateInfoIcon ? 'slide-in-animation' : 'slide-out-animation'
+        }
+      />
     </div>
   )
 }

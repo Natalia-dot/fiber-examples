@@ -9,6 +9,7 @@ import { Scene } from './Scene'
 
 export const App = () => {
   let { camPosition } = useCamContext()
+  console.log(camPosition)
   return (
     <>
       <Canvas camera={{ position: camPosition }} shadows>
@@ -25,6 +26,6 @@ const CameraRig = ({ camPosition }) => {
   useFrame((state) => {
     const targetPosition = new THREE.Vector3(...camPosition)
     state.camera.position.lerp(targetPosition, 0.1)
-    state.camera.lookAt(0, 0, 0)
+    state.camera.lookAt(0, 1.9, -9)
   })
 }
