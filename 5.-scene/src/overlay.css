@@ -73,10 +73,14 @@ a {
   transition: transform 0.3s;
 }
 
+#infoCardClick {
+  background-color: #eae5e1;
+}
+
 a#infoCardClick {
   position: sticky;
-  left: 90%;
-  top: 5%;
+  right: 100%;
+  top: 1%;
   padding: 0;
   height: 30px;
 }
@@ -104,6 +108,18 @@ a#infoCardClick {
   line-height: 30px;
   /* scrollbar-width: thin;
   scrollbar-color: #2e2d2d #eae5e1; */
+}
+
+@media screen and (max-width: 600px) {
+  #infoCard {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .camButton {
+    width: 90%;
+    margin: 0;
+  }
 }
 
 #infoCard::-webkit-scrollbar {
@@ -206,10 +222,28 @@ hgroup > h3 {
   padding: 0 15px 30px 15px;
 }
 
-#camButtonDiv > button {
+.camButton {
   width: 50%;
   margin: 2rem;
   height: 100%;
+  color: #eae5e1;
+  background-color: #2e2d2d;
+  border-radius: 25px;
+  border: #b3afac 2px;
+  transition: transform 0.2s ease-in-out;
+  border-style: solid;
+
+  @media screen and (max-width: 500px) {
+    width: 90%;
+    margin: 0;
+  }
+}
+
+.camButton.activeCamButton {
+  background-color: #1f1e1e;
+  color: #aca8a6;
+  transform: scale(0.93);
+  border: #aca8a6;
 }
 
 @keyframes getOpacity {
