@@ -154,41 +154,189 @@ export const InfoCard = ({ $showInfo, $showIcon }) => {
             to, in a use effect: <br />
             Check if the {light} exists (lightRef.current) and if it does, make
             a new instance of the {helper} with the {light} ref, so that the
-            helper "sees" the light. Then just add the helper as a child of the
-            light
+            helper "sees" the light. Then add the helper as a child of the
+            light. <br />
+            In the return statement at the use effect we will deal with the
+            disposal as the component unmounts. We will do that simply by
+            checking if {helper} exists and thenn removing() it from the {light}
+            . <br /> <br />
+            Then, we have to deal with updating the helper when the {light}{' '}
+            changes. We will do that by starting a use frame and checking if the{' '}
+            {helper} exists. If it does, then we update() it.
+            <br />
+            As the last thing, we just add the reference to the {light}. The{' '}
+            {helper}
+            is handled in the useEffect.
+          </p>
+          <details>
+            <summary style={{ fontSize: '20px', fontWeight: 'bold' }}>
+              Code Snippet
+            </summary>
+            <pre>
+              <code>
+                {`
+const directionalLightRef = useRef()
+const directionalLightHelperRef = useRef()
+useEffect(() => {
+  if (directionalLightRef.current) {
+    directionalLightHelperRef.current = new THREE.DirectionalLightHelper(
+      directionalLightRef.current,
+      1
+    )
+    directionalLightRef.current.add(directionalLightHelperRef.current)
+  }
+  return () => {
+    if (directionalLightHelperRef.current) {
+      directionalLightRef.current.remove(directionalLightHelperRef.current)
+    }
+  }
+}, [])
+          `}
+              </code>
+            </pre>
+          </details>
+        </hgroup>
+        <br />
+        <br />
+
+        <hgroup id="animations">
+          <h3 className="header-left-corner">Animations</h3>
+          <br />
+          <p>
+            There are different kinds of methods for animating items in a
+            webpage through css:
+          </p>
+          <ul>
+            <li>Animations</li>
+            <li>Transitions</li>
+          </ul>
+          <p>
+            <br />
+            <b>Animations</b> usually are one way transformations. <br /> For
+            example, if the animation is set to loop, we won't see this, but if
+            the animation is set to only run once, the animation will finish
+            back in square one: so basically the transformation is not applied
+            to the object permanently. <br /> For example, say we have an item
+            that we want to upscale while hovering over it, if we set the
+            animation to scale it, it will increase in size as the animation
+            states but as soon as the animation duration runs out, the size will
+            go back to x1. <br /> <br />
+            However if we use transitions, this is overridden and solved. <br />
+            With transitions, the idea is that you can keep the changed state
+            until the transformation finishes (when the cursor stops laying atop
+            the item) and then it returns to its original state reversing the
+            transition without greater effort. <br />
+            The animation is done with a @keyframes rule, where you set the
+            ranges for different kinds of transformations of as many properties
+            as you may need. Then the name of the keyframe is logged as
+            animation-name in the css class for the item that is going to have
+            that animation. The animation-duration property is also needed for
+            the animation to work. <br /> <br />
+            The transition, however, isn't quite like that. You need to create a
+            new class with the transformations to apply to the item. So in our
+            case scaling, and let's also add a background color change. We would
+            have to set that in the <i>::hover</i> class and then, add to the
+            original class a transition property. <br />
+            In the transition values, the first thing we have to do is set the
+            properties that we want changed; so if we want the transition for
+            all of them, the keyword "all" will do just the trick. If we want it
+            to only be scaled, we can use the "transform" keyword (scaling is a
+            transformation submethod), and if we only want the background-color,
+            then we set "background-color". We also need to specify the
+            transition duration, or it won't work, just like what happened to
+            the animation.
           </p>
         </hgroup>
         <br />
         <br />
         <br />
-        <br />
-
-        <hgroup id="animations">
-          <h3>Animations</h3>
-        </hgroup>
-        <br />
-        <br />
-        <br />
-        <br />
 
         <hgroup id="render">
-          <h3>Too many rendered components.</h3>
+          <h3 className="header-right-corner">Too many rendered components.</h3>
+          <br />
+          <p>
+            I had a silly little issue while adding most of the three elements
+            to the canvas. <br /> The setup was that I, initially, had my Scene
+            alongside my app: Everything was in the same .jsx file. <br /> This
+            led to a console error saying that the elements could not be
+            rendered, claiming there were too many; quite a frequent sight in
+            THREE apparently. <br /> The issue ceased when I split the code into
+            smaller sections (so splitting the App.jsx and creating another file
+            called Scene.jsx). This effectively solved the error.
+          </p>
         </hgroup>
-        <br />
         <br />
         <br />
         <br />
 
         <hgroup id="extend">
-          <h3>Extend by FIBER</h3>
+          <h3 className="header-left-corner">Extend by FIBER</h3>
+          <br />
+          <p>
+            There will be times when you get an error: [something] does not form
+            part of the jsx namespace. Did you forget to extend? <br />
+            This happens when certain 3rd party elements aren't correctly
+            implemented and we need to extend them so that r3f can use them
+            without error. We then would need to provide the extended element
+            with their proper constructor, for which we would need the original
+            documentation from the third party library.
+          </p>
         </hgroup>
-        <br />
         <br />
         <br />
         <br />
 
         <hgroup id="#animations">
-          <h3>CSS animations</h3>
+          <h3 className="header-left-corner">CSS animations</h3>
+          <br />
+          <p>
+            When creating the animations for the jsx elements... It was a
+            nightmare. I had everything set up. My animations were correctly
+            implemented but they did not show for some reason.. The reason being
+            the display: none. <br /> <br />
+            This happens because there is no DomElement when the display is
+            none, so the classes cannot be applied properly. <br />
+            <br />
+            <br />
+            I had an info icon that showed up first thing in the scene, and the
+            goal was to make it disappear when the icon is clicked. Then another
+            tab popped up, and when that tab's closing icon is clicked, then
+            make it appear again.
+            <br />
+            We have TWO use states. One for showing the popup, and another for
+            changing between the slide-in animation and the slide-out animation,
+            so the animation state.
+            <br />
+            The first state, the popup shown, will talk about the popup being
+            shown, and the second will tell what animation goes when; so when it
+            is true, that means that the classname will be slide-in and when
+            false, that it is slide-out.
+            <br />
+            The hidden popup will have a hidden hard coded class, and will
+            change with the click of the info button. The buton will have a
+            hardcoded flex that turns into display none when the info is shown.
+            So info will be false on start (signaling that there is no info on
+            display), and the animation will be true (slide-in so that onLoad
+            the info icon will show the animation too.)
+            <br />
+            We will have the scene load. As soon as the icon loads, it will show
+            the slide-in animation, because when animation is true, that is the
+            animation it is set to.
+            <br />
+            When the icon is clicked, we have a handleClick function that will
+            toggle the animation state (so it will be switched to the slide-out
+            class), and we will have a timeout function that fires at the
+            <b>end</b> of the animation-duration, that toggles the popup
+            container and sets its display to flex and when it appears in the
+            DOM, then it will have its proper class with its animation.
+            <br />
+            When the close button is then clicked on the popup, the animation
+            fires for the popup to leave, and when it finishes, info is toggled
+            to false. We have established an useEffect that states that when
+            there is no info, we have a timeout that waits ten miliseconds after
+            info is false and after that it adds the class to our info button,
+            which toggles the slide-in animation.
+          </p>
         </hgroup>
       </section>
     </div>

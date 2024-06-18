@@ -25,7 +25,7 @@ export const App = () => {
 const CameraRig = ({ camPosition }) => {
   useFrame((state) => {
     const targetPosition = new THREE.Vector3(...camPosition)
-    state.camera.position.lerp(targetPosition, 0.1)
+    state.camera.position.lerp(targetPosition, 0.01)
     state.camera.lookAt(0, 1.9, -9)
   })
 }

@@ -227,20 +227,22 @@ hgroup > h3 {
   margin: 2rem;
   height: 100%;
   color: #eae5e1;
-  background-color: #2e2d2d;
+  background-color: rgb(226, 224, 224, 0.3);
   border-radius: 25px;
   border: #b3afac 2px;
-  transition: transform 0.2s ease-in-out;
+  transition: all 0.2s ease-out;
   border-style: solid;
+  font-size: 16px;
 
   @media screen and (max-width: 500px) {
     width: 90%;
     margin: 0;
+    font-size: 12px;
   }
 }
 
 .camButton.activeCamButton {
-  background-color: #1f1e1e;
+  background-color: rgba(100, 98, 98, 0.3);
   color: #aca8a6;
   transform: scale(0.93);
   border: #aca8a6;
