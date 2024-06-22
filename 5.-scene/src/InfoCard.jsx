@@ -337,6 +337,8 @@ useEffect(() => {
             info is false and after that it adds the class to our info button,
             which toggles the slide-in animation.
           </p>
+          <br />
+          <br />
         </hgroup>
       </section>
     </div>

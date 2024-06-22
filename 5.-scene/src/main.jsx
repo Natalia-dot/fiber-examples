@@ -1,14 +1,16 @@
-import { StrictMode } from 'react'
+import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Canvas } from '@react-three/fiber'
 import './index.css'
 import { App } from './App'
 import { CameraContextProvider } from './context'
+import { Loader } from '@react-three/drei'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <CameraContextProvider>
-      <App />
-    </CameraContextProvider>
-  </StrictMode>
+  <>
+    <StrictMode>
+      <CameraContextProvider>
+        <App />
+      </CameraContextProvider>
+    </StrictMode>
+  </>
 )
