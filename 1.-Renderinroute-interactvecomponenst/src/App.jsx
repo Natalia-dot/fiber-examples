@@ -3,7 +3,7 @@ import './App.css'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { degToRad } from 'three/src/math/MathUtils.js'
 import * as THREE from "three";
-import { objectScale } from 'three/examples/jsm/nodes/Nodes.js';
+
 
 const Cube = (props) => {
 const ref = useRef();
