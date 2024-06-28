@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+#overlay {
+  width: 100%;
+  height: 40px;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#overlay button {
+  width: 60px;
+  height: 35px;
+  margin: 2.5px 6px;
+}
