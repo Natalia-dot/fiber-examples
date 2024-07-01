@@ -48,21 +48,21 @@ const bestShowcasePosition = (ref) => {
 
   if (xSpace >= ySpace && xSpace >= zSpace) {
     if (ySpace >= zSpace) {
-      targetRotation = [0, 0, 0] // No rotation needed
+      targetRotation = [0, 0, 0]
     } else {
-      targetRotation = [degToRad(90), 0, 0] // Rotate around X to swap Y and Z
+      targetRotation = [degToRad(90), 0, 0]
     }
   } else if (ySpace >= xSpace && ySpace >= zSpace) {
     if (xSpace >= zSpace) {
-      targetRotation = [0, 0, degToRad(90)] // Rotate around Z to swap X and Y
+      targetRotation = [0, 0, degToRad(90)]
     } else {
-      targetRotation = [degToRad(90), 0, degToRad(90)] // Rotate around X and Z
+      targetRotation = [degToRad(90), 0, degToRad(90)]
     }
   } else if (zSpace >= xSpace && zSpace >= ySpace) {
     if (xSpace >= ySpace) {
-      targetRotation = [0, degToRad(90), 0] // Rotate around Y to swap X and Z
+      targetRotation = [degToRad(90), degToRad(90), 0]
     } else {
-      targetRotation = [degToRad(90), degToRad(90), 0] // Rotate around X and Y
+      targetRotation = [degToRad(90), degToRad(90), 0]
     }
   }
 

@@ -14,13 +14,10 @@ export const Pieces = () => {
 
       <group position={[0, 0, 0]} rotation={[0, 0, 0]} scale={0.1}>
         {gltf.scene.children.map((child, index, arr) => {
-          const prev = arr[index - 1]
-          console.log(child)
-
           return (
             <IndividualPiece
               object={child}
-              position={[0, index - 10, 0]}
+              position={[0, index - 10, -10, 0]}
               key={child.userData.name}
             />
           )
