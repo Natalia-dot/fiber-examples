@@ -10,9 +10,11 @@ export const IndividualPiece = (props) => {
 
   useEffect(() => {
     if (ref.current) {
-      const rotation = bestShowcasePosition(ref)
-      setTargetRotation(rotation)
-      ref.current.rotation.set(...rotation)
+      const targetRotation = bestShowcasePosition(ref)
+      setTargetRotation(targetRotation)
+      ref.current.rotation.set(...targetRotation)
+      ref.current.geometry.center()
+      console.log(ref.current.postiion.y)
     }
   }, [ref])
 
@@ -28,7 +30,7 @@ export const IndividualPiece = (props) => {
     <primitive
       ref={ref}
       {...props}
-      onClick={(e) => [setActive(!active), console.log(ref)]}
+      onClick={(e) => [setActive(!active), e.stopPropagation()]}
       rotation={targetRotation}
     />
   )
