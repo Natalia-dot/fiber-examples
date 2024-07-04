@@ -14,7 +14,7 @@ export const IndividualPiece = (props) => {
       setTargetRotation(targetRotation)
       ref.current.rotation.set(...targetRotation)
       ref.current.geometry.center()
-      console.log(ref.current.postiion.y)
+      ref.current.position.y = 6 + ref.current.position.y
     }
   }, [ref])
 
