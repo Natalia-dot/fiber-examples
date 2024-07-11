@@ -6,7 +6,9 @@ import { degToRad } from 'three/src/math/MathUtils.js'
 export const IndividualPiece = (props) => {
   const [active, setActive] = useState(false)
   const ref = useRef()
+  const { $prev: prev } = props
   const [targetRotation, setTargetRotation] = useState([0, 0, 0])
+  const [targetPosition, setTargetPosition] = useState(props.position)
 
   useEffect(() => {
     if (ref.current) {
@@ -14,7 +16,6 @@ export const IndividualPiece = (props) => {
       setTargetRotation(targetRotation)
       ref.current.rotation.set(...targetRotation)
       ref.current.geometry.center()
-      ref.current.position.y = 6 + ref.current.position.y
     }
   }, [ref])
 
@@ -30,8 +31,14 @@ export const IndividualPiece = (props) => {
     <primitive
       ref={ref}
       {...props}
-      onClick={(e) => [setActive(!active), e.stopPropagation()]}
+      onClick={(e) => [
+        setActive(!active),
+        e.stopPropagation(),
+        console.log(ref)
+      ]}
       rotation={targetRotation}
+      position={targetPosition}
+      // position={''}
     />
   )
 }

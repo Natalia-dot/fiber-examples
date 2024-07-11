@@ -31,6 +31,7 @@ export const FullSword = () => {
       ref={ref}
       onPointerOver={(e) => setIsHovered(true)}
       onPointerOut={(e) => setIsHovered(false)}
+      scale={0.1}
     />
   )
 }
