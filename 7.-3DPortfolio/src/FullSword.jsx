@@ -1,3 +1,4 @@
+import { useGLTF } from '@react-three/drei'
 import { useFrame, useLoader, useThree } from '@react-three/fiber'
 import { useEffect, useRef, useState } from 'react'
 import { MathUtils } from 'three'
@@ -6,7 +7,7 @@ import { GLTFLoader } from 'three/examples/jsm/Addons.js'
 export const FullSword = () => {
   const ref = useRef()
   const three = useThree()
-  const gltf = useLoader(GLTFLoader, '../BusterSwordModeladoEnd.glb')
+  const gltf = useGLTF('z', true)
   console.log(gltf)
   const [isHovered, setIsHovered] = useState(false)
 
